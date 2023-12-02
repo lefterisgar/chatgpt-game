@@ -77,7 +77,7 @@ function handleKeyPress(event) {
 // Drop the fishing rod into the water
 function dropFishingRod() {
   const fishingRod = document.getElementById('fishingRod');
-  fishingRod.style.transform = 'translateY(300px)';
+  fishingRod.style.transform = 'translateY(150px)';
   isRodDropped = true;
   isFishingRodExtended = true;
 }
