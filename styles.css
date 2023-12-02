@@ -11,6 +11,7 @@
   height: 50px;
   position: absolute;
   background-color: blue;
+  cursor: pointer;
 }
 
 #score {

@@ -25,18 +25,21 @@ function addFish() {
   fishElement.style.backgroundColor = 'blue';
   fishElement.dataset.type = fish.type;
   fishElement.dataset.points = fish.points;
+  fishElement.style.left = '450px'; // Adjust initial position
 
   fishContainer.appendChild(fishElement);
 
-  // Move the fish randomly within the container
-  const containerWidth = fishContainer.offsetWidth - fishElement.offsetWidth;
-  const containerHeight = fishContainer.offsetHeight - fishElement.offsetHeight;
-
-  const randomX = Math.floor(Math.random() * containerWidth);
-  const randomY = Math.floor(Math.random() * containerHeight);
-
-  fishElement.style.left = randomX + 'px';
-  fishElement.style.top = randomY + 'px';
+  // Move the fish horizontally within the container
+  let pos = 450; // Initial position
+  const moveFish = setInterval(() => {
+    if (pos <= 0) {
+      clearInterval(moveFish);
+      fishElement.parentNode.removeChild(fishElement);
+    } else {
+      pos -= 5; // Adjust movement speed
+      fishElement.style.left = pos + 'px';
+    }
+  }, 100);
 }
 
 // Handle the fish click event
@@ -61,14 +64,14 @@ function handleKeyPress(event) {
   if (event.keyCode === 32) { // Space key
     if (!isRodDropped) {
       isRodDropped = true;
-      fishInterval = setInterval(addFish, 1000);
+      fishInterval = setInterval(addFish, 2000); // Adjust fish appearance interval
     }
     else {
       const fishContainer = document.getElementById('fishContainer');
       const fishElements = fishContainer.getElementsByClassName('fish');
 
       if (fishElements.length > 0) {
-        const nearestFish = fishElements[0];
+        const nearestFish = fishElements[fishElements.length - 1];
 
         const rodPosition = 250; // Adjust this value based on the rod position
         const fishPosition = nearestFish.getBoundingClientRect().left;
