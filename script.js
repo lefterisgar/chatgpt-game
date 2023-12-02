@@ -25,31 +25,33 @@ function addFish() {
   fishElement.style.backgroundColor = 'blue';
   fishElement.dataset.type = fish.type;
   fishElement.dataset.points = fish.points;
-  fishElement.style.left = '450px'; // Adjust initial position
+
+  const containerWidth = fishContainer.offsetWidth - fishElement.offsetWidth;
+  const containerHeight = fishContainer.offsetHeight - fishElement.offsetHeight;
+
+  const randomX = Math.floor(Math.random() * containerWidth);
+  const randomY = Math.floor(Math.random() * containerHeight);
+
+  fishElement.style.top = randomY + 'px';
+  fishElement.style.left = randomX + 'px';
 
   fishContainer.appendChild(fishElement);
 
-  // Move the fish horizontally within the container
-  let pos = 450; // Initial position
+  // Move the fish randomly within the container
   const moveFish = setInterval(() => {
-    if (pos <= 0) {
-      clearInterval(moveFish);
-      fishElement.parentNode.removeChild(fishElement);
-    } else {
-      pos -= 5; // Adjust movement speed
-      fishElement.style.left = pos + 'px';
-    }
-  }, 100);
-}
+    const newX = Math.floor(Math.random() * containerWidth);
+    const newY = Math.floor(Math.random() * containerHeight);
+    fishElement.style.top = newY + 'px';
+    fishElement.style.left = newX + 'px';
+  }, 1000);
 
-// Handle the fish click event
-function fishClicked(event) {
-  const fishElement = event.target;
-  const fishType = fishElement.dataset.type;
-  const fishPoints = parseInt(fishElement.dataset.points);
-
-  fishElement.parentNode.removeChild(fishElement);
-  updateScore(fishPoints);
+  // Remove the fish when clicked
+  fishElement.addEventListener('click', () => {
+    clearInterval(moveFish);
+    fishElement.parentNode.removeChild(fishElement);
+    const fishPoints = parseInt(fishElement.dataset.points);
+    updateScore(fishPoints);
+  });
 }
 
 // Update the score
@@ -66,25 +68,6 @@ function handleKeyPress(event) {
       isRodDropped = true;
       fishInterval = setInterval(addFish, 2000); // Adjust fish appearance interval
     }
-    else {
-      const fishContainer = document.getElementById('fishContainer');
-      const fishElements = fishContainer.getElementsByClassName('fish');
-
-      if (fishElements.length > 0) {
-        const nearestFish = fishElements[fishElements.length - 1];
-
-        const rodPosition = 250; // Adjust this value based on the rod position
-        const fishPosition = nearestFish.getBoundingClientRect().left;
-
-        if (fishPosition >= rodPosition && fishPosition <= rodPosition + 100) {
-          const fishType = nearestFish.dataset.type;
-          const fishPoints = parseInt(nearestFish.dataset.points);
-
-          nearestFish.parentNode.removeChild(nearestFish);
-          updateScore(fishPoints);
-        }
-      }
-    }
   }
 }
 
@@ -95,7 +78,7 @@ function startGame() {
   clearInterval(fishInterval);
 
   const fishContainer = document.getElementById('fishContainer');
-  fishContainer.innerHTML = '';
+  fishContainer.innerHTML = '<div id="fishingRod"></div>';
 
   const scoreElement = document.getElementById('score');
   scoreElement.textContent = 'Score: 0';
