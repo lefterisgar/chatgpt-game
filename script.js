@@ -1,6 +1,7 @@
 let score = 0;
 let isRodDropped = false;
 let fishInterval;
+let isFishingRodExtended = false;
 
 // Define the fish types and their point values
 const fishTypes = [
@@ -64,17 +65,36 @@ function updateScore(points) {
 // Handle the space key press event
 function handleKeyPress(event) {
   if (event.keyCode === 32) { // Space key
-    if (!isRodDropped) {
-      isRodDropped = true;
-      fishInterval = setInterval(addFish, 2000); // Adjust fish appearance interval
+    if (!isRodDropped && !isFishingRodExtended) {
+      dropFishingRod();
+    }
+    else if (isRodDropped && isFishingRodExtended) {
+      retractFishingRod();
     }
   }
+}
+
+// Drop the fishing rod into the water
+function dropFishingRod() {
+  const fishingRod = document.getElementById('fishingRod');
+  fishingRod.style.transform = 'translateY(300px)';
+  isRodDropped = true;
+  isFishingRodExtended = true;
+}
+
+// Retract the fishing rod from the water
+function retractFishingRod() {
+  const fishingRod = document.getElementById('fishingRod');
+  fishingRod.style.transform = 'translateY(0)';
+  isRodDropped = false;
+  isFishingRodExtended = false;
 }
 
 // Start the fishing game
 function startGame() {
   score = 0;
   isRodDropped = false;
+  isFishingRodExtended = false;
   clearInterval(fishInterval);
 
   const fishContainer = document.getElementById('fishContainer');
