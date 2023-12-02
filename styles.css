@@ -1,0 +1,20 @@
+#fishContainer {
+  width: 300px;
+  height: 300px;
+  border: 2px solid #000;
+  margin: 20px auto;
+  position: relative;
+}
+
+.fish {
+  width: 50px;
+  height: 50px;
+  position: absolute;
+  background-color: blue;
+}
+
+#score {
+  text-align: center;
+  margin-top: 20px;
+  font-size: 24px;
+}
