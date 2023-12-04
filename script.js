@@ -153,3 +153,6 @@ function stopFishInterval() {
 function startFishInterval() {
   fishInterval = setInterval(addFish, 2000);
 }
+
+// Call the startGame() function to begin the game
+startGame();
