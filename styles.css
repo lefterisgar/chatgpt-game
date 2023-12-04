@@ -1,0 +1,103 @@
+body {
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.scene {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+}
+
+.sky {
+    position: relative;
+    width: 100%;
+    height: 50%;
+    background: linear-gradient(to bottom, #87CEEB, #1E90FF);
+    overflow: hidden;
+}
+
+.sun {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    width: 80px;
+    height: 80px;
+    background-color: #FFD700;
+    border-radius: 50%;
+    z-index: 1;
+}
+
+.sea {
+    position: relative;
+    width: 100%;
+    height: 50%;
+}
+
+.sea-surface {
+    position: absolute;
+    width: 100%;
+    height: 20px;
+    background-color: #add8e6;
+    top: 0;
+}
+
+.sea-bottom {
+    position: absolute;
+    width: 100%;
+    height: 80%;
+    background-color: #1E90FF;
+    bottom: 0;
+}
+
+.boat {
+    position: absolute;
+    bottom: 250px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 120px;
+    height: 60px;
+    background-color: #8B4513;
+    border-radius: 0 0 10px 10px;
+    z-index: 2;
+}
+
+#fishing-rod {
+    background-color: #8B4513;
+    width: 6px;
+    height: 80px;
+    position: fixed;
+    top: 400px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.string {
+    background-color: #8B4513;
+    width: 2px;
+    height: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1;
+    transition: height 1s ease-in-out;
+}
+
+.bobber {
+    background-color: #FF0000;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    box-shadow: 0 0 10px rgba(255, 0, 0, 0.7);
+    transition: transform 1s ease-in-out, opacity 0.5s ease-in-out;
+    opacity: 0;
+}
