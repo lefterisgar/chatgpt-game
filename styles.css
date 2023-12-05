@@ -101,3 +101,22 @@ body {
     transition: transform 1s ease-in-out, opacity 0.5s ease-in-out;
     opacity: 0;
 }
+
+#score-display {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-size: 18px;
+    color: #fff;
+    z-index: 3;
+}
+
+#message-display {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 18px;
+    color: #fff;
+    z-index: 3;
+}
