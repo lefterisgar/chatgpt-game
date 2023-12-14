@@ -16,9 +16,9 @@ body {
 .sky {
     position: relative;
     width: 100%;
-    height: 50%;
-    background: linear-gradient(to bottom, #87CEEB, #1E90FF);
-    overflow: hidden;
+    height: 75%;
+    background: linear-gradient(to bottom, #87afeb, #f4f4f7);
+    top: 0;
 }
 
 .sun {
@@ -32,31 +32,19 @@ body {
     z-index: 1;
 }
 
-.sea {
-    position: relative;
-    width: 100%;
-    height: 50%;
-}
 
-.sea-surface {
-    position: absolute;
-    width: 100%;
-    height: 20px;
-    background-color: #add8e6;
-    top: 0;
-}
 
 .sea-bottom {
     position: absolute;
     width: 100%;
-    height: 80%;
+    height: 50%;
     background-color: #1E90FF;
     bottom: 0;
 }
 
 .boat {
     position: absolute;
-    bottom: 250px;
+    bottom: 365px;
     left: 50%;
     transform: translateX(-50%);
     width: 120px;
@@ -67,17 +55,17 @@ body {
 }
 
 #fishing-rod {
-    background-color: #8B4513;
+    background-color: #6c6865;
     width: 6px;
     height: 80px;
     position: fixed;
-    top: 400px;
+    top: 250px;
     left: 50%;
     transform: translateX(-50%);
 }
 
 .string {
-    background-color: #8B4513;
+    background-color: #f1f1f1;
     width: 2px;
     height: 0;
     position: absolute;
@@ -164,3 +152,37 @@ body {
     color: #fff;
     z-index: 3;
 }
+
+/* Add the following styles to define the appearance and animation of fishes */
+.fish {
+    position: absolute;
+    width: 40px;
+    height: 20px;
+    background-color: orange;
+    border-radius: 50% / 20%;
+    animation: fishSwim 5s linear infinite;
+}
+
+  
+  .fish-path {
+    /* Add necessary styles for the fish path element */
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: white;
+  }
+  
+  @keyframes fishSwim{
+    0% {
+      left: calc(100% + 40px);
+      transform: scaleX(-1);
+    }
+
+    100% {
+        left: -40px;
+        transform: scaleX(-1);
+      }
+   
+  }
