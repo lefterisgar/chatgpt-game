@@ -5,6 +5,8 @@ document.addEventListener('DOMContentLoaded', function () {
     const messageDisplay = document.getElementById('message-display');
     const timerDisplay = document.getElementById('timer-display');
     const timerBar = document.querySelector('#timer-bar .progress');
+    const mainMenu = document.getElementById('main-menu');
+    const gameScene = document.querySelector('.scene');
 
     let gameTimer; // Variable to store the game timer interval
     let timeLeft = 60; // Set the initial game time in seconds
@@ -25,6 +27,15 @@ document.addEventListener('DOMContentLoaded', function () {
     function updateProgressBar() {
         const progressBarWidth = (timeLeft / 30) * 100; // Calculate the width percentage
         timerBar.style.width = `${progressBarWidth}%`;
+    }
+
+    // Function to start the game
+    function startGame() {
+        mainMenu.style.display = 'none';
+        gameScene.style.display = 'block';
+        resetGame();
+        gameStarted = true;
+        startGameTimer();
     }
 
     function startGameTimer() {
@@ -132,23 +143,21 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     document.addEventListener('keydown', function (event) {
-        if (event.key === ' ') {
-            if (!gameStarted) {
-                resetGame();
-                gameStarted = true;
-                startGameTimer();
-            }
-
-            if (!isCasting) {
-                isCasting = true;
-                castBobber();
-            } else {
-                isCasting = false;
-                retractBobber();
+        if (gameStarted) {
+            if (event.key === ' ') {
+                if (!isCasting) {
+                    isCasting = true;
+                    castBobber();
+                } else {
+                    isCasting = false;
+                    retractBobber();
+                }
             }
         }
     });
 
     // Call setFishingRodPosition to set the initial position when the page loads
     setFishingRodPosition();
+
+    document.getElementById('play-button').addEventListener('click', startGame);
 });
