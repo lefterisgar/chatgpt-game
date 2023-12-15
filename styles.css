@@ -32,7 +32,16 @@ body {
     z-index: 1;
 }
 
-
+.sea {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 50%;
+    background-color: #1E90FF;
+    overflow: hidden;
+    z-index: 0;
+}
 
 .sea-bottom {
     position: absolute;
@@ -156,33 +165,14 @@ body {
 /* Add the following styles to define the appearance and animation of fishes */
 .fish {
     position: absolute;
+    top: calc(50% +25vh - 10px);
+    left: -40px;
     width: 40px;
     height: 20px;
     background-color: orange;
     border-radius: 50% / 20%;
     animation: fishSwim 5s linear infinite;
+    transform: scaleX(-1);
+    transform-origin: center;
+    z-index: 1;
 }
-
-  
-  .fish-path {
-    /* Add necessary styles for the fish path element */
-    position: absolute;
-    top: 50%;
-    left: 0;
-    width: 100%;
-    height: 2px;
-    background-color: white;
-  }
-  
-  @keyframes fishSwim{
-    0% {
-      left: calc(100% + 40px);
-      transform: scaleX(-1);
-    }
-
-    100% {
-        left: -40px;
-        transform: scaleX(-1);
-      }
-   
-  }

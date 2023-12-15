@@ -175,9 +175,9 @@ function createFish() {
   const fishWidth = fish.offsetWidth;
   const fishHeight = fish.offsetHeight;
   const maxLeft = seaWidth - fishWidth;
-  const maxTop = sea.offsetHeight - fishHeight;
+  const middleTop = sea.offsetHeight - fishHeight;
   const fishLeft = Math.random() * maxLeft;
-  const fishTop = Math.random() * maxTop;
+  const fishTop = Math.random() * middleTop;
   fish.style.left = `${fishLeft}px`;
   fish.style.top = `${fishTop}px`;
 
