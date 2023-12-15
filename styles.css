@@ -16,9 +16,9 @@ body {
 .sky {
     position: relative;
     width: 100%;
-    height: 50%;
-    background: linear-gradient(to bottom, #87CEEB, #1E90FF);
-    overflow: hidden;
+    height: 75%;
+    background: linear-gradient(to bottom, #87afeb, #f4f4f7);
+    top: 0;
 }
 
 .sun {
@@ -32,24 +32,10 @@ body {
     z-index: 1;
 }
 
-.sea {
-    position: relative;
-    width: 100%;
-    height: 50%;
-}
-
-.sea-surface {
-    position: absolute;
-    width: 100%;
-    height: 20px;
-    background-color: #add8e6;
-    top: 0;
-}
-
 .sea-bottom {
     position: absolute;
     width: 100%;
-    height: 80%;
+    height: 45%;
     background-color: #1E90FF;
     bottom: 0;
 }
