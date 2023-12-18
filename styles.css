@@ -163,15 +163,20 @@ body {
     border-radius: 15px; /* Add border-radius for rounded corners */
     width: 80%;
     max-width: 400px;
-    height: 150px;
+    height: 200px;
     background-color: rgba(135, 175, 235, 0.8);
     z-index: 10;
 }
 
 #main-menu h1 {
     color: #fff;
-    font-size: 2em;
-    margin-bottom: 10px; /* Adjusted bottom margin for title */
+    font-size: 2.5em;
+    margin-bottom: 10px;
+    font-family: 'Press Start 2P', cursive; /* Use a game-like font */
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8); /* Add a subtle text shadow */
 }
 
 #main-menu.closing {
