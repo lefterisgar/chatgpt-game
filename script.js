@@ -31,11 +31,26 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Function to start the game
     function startGame() {
-        mainMenu.style.display = 'none';
-        gameScene.style.display = 'block';
+        // Reset game-related variables and elements
         resetGame();
         gameStarted = true;
         startGameTimer();
+    }
+
+    // Function to end the game
+    function endGame() {
+        if(gameStarted) {
+        retractBobber();
+
+        // Add any game-ending logic here
+        showMessage(`Game over! Your final score: ${score}`);
+    
+        // Show the main menu with an opening animation
+        document.getElementById('main-menu').style.display = 'flex';
+        document.getElementById('main-menu').classList.add('opening');
+
+        gameStarted = false;
+    }
     }
 
     function startGameTimer() {
@@ -49,14 +64,6 @@ document.addEventListener('DOMContentLoaded', function () {
                 updateProgressBar();
             }
         }, 1000); // Update every second
-    }
-
-    function endGame() {
-        retractBobber();
-        gameStarted = false;
-        // Add any game-ending logic here
-        showMessage(`Game over! Your final score: ${score}`);
-        // You may want to reset the game or display a "Play Again" option.
     }
 
     function resetGame() {
@@ -159,5 +166,28 @@ document.addEventListener('DOMContentLoaded', function () {
     // Call setFishingRodPosition to set the initial position when the page loads
     setFishingRodPosition();
 
-    document.getElementById('play-button').addEventListener('click', startGame);
+    // Event listener for the Play button
+    document.getElementById('play-button').addEventListener('click', function () {
+        // Get the position of the main menu
+        const menuPosition = document.getElementById('main-menu').getBoundingClientRect();
+
+        document.getElementById('main-menu').classList.remove('opening');
+
+        // Set the closing animation position to the menu position
+        document.getElementById('main-menu').style.left = `${menuPosition.left}px`;
+        document.getElementById('main-menu').style.top = `${menuPosition.top}px`;
+
+        // Add a class to trigger the closing animation
+        document.getElementById('main-menu').classList.add('closing');
+
+        // Wait for the animation to complete, then start the game
+        setTimeout(function () {
+            // Reset the main menu
+            document.getElementById('main-menu').classList.remove('closing');
+            document.getElementById('main-menu').style.display = 'none';
+
+            // Start the game
+            startGame();
+        }, 1000); // Adjust the timeout based on your closing animation duration
+    });
 });

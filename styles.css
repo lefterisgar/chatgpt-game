@@ -152,18 +152,65 @@ body {
 }
 
 #main-menu {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     display: flex;
-    flex-direction: column;
+    flex-direction: column; /* Change to column to place items vertically */
     align-items: center;
-    justify-content: center;
-    height: 100vh;
-    background-color: #87afeb; /* Set the background color for the main menu */
+    justify-content: space-around; /* Horizontal alignment */
+    border-radius: 15px; /* Add border-radius for rounded corners */
+    width: 80%;
+    max-width: 400px;
+    height: 150px;
+    background-color: rgba(135, 175, 235, 0.8);
+    z-index: 10;
 }
 
 #main-menu h1 {
-    color: #fff; /* Set the text color for the title */
+    color: #fff;
+    font-size: 2em;
+    margin-bottom: 10px; /* Adjusted bottom margin for title */
+}
+
+#main-menu.closing {
+    animation: closeMenu 1s forwards;
+}
+
+#main-menu.opening {
+    animation: openMenu 1s forwards;
+}
+
+@keyframes closeMenu {
+    from {
+        transform: scale(1);
+        opacity: 1;
+    }
+    to {
+        transform: scale(0);
+        opacity: 0;
+    }
+}
+
+@keyframes openMenu {
+    from {
+        transform: scale(0);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
 }
 
 #play-button {
-    margin-top: 20px; /* Adjust the top margin of the play button */
+    padding: 10px 20px;
+    font-size: 1.5em;
+    background-color: #4CAF50;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
 }
