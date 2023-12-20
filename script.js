@@ -8,12 +8,9 @@ document.addEventListener('DOMContentLoaded', function () {
     const highestScoreDisplay = document.getElementById('highest-score');
     const fishCatchSound = document.getElementById('fishCatchSound');
     const bobberCastSound = document.getElementById('bobberCastSound');
-    const mainMenu = document.getElementById('main-menu');
-    const gameScene = document.querySelector('.scene');
 
     let gameTimer; // Variable to store the game timer interval
     let timeLeft = 60; // Set the initial game time in seconds
-
     let isCasting = false;
     let isFishCaught = false;
     let score = 0;
@@ -54,9 +51,20 @@ document.addEventListener('DOMContentLoaded', function () {
     // Function to start the game
     function startGame() {
         // Reset game-related variables and elements
-        resetGame();
-        gameStarted = true;
+        clearInterval(gameTimer);
+        updateScore();
+        updateTimerDisplay();
+        updateProgressBar();
+        setFishingRodPosition();
+        resetMessage();
         startGameTimer();
+
+        gameStarted = true;
+        isCasting = false;
+        isFishCaught = false;
+
+        timerDisplay.style.display = 'block';
+        scoreDisplay.style.display = 'block';
     }
 
     // Function to end the game
@@ -89,21 +97,6 @@ document.addEventListener('DOMContentLoaded', function () {
                 updateProgressBar();
             }
         }, 1000); // Update every second
-    }
-
-    function resetGame() {
-        clearInterval(gameTimer);
-        isCasting = false;
-        isFishCaught = false;
-        score = 0;
-        timeLeft = 30; // Set your initial game time here
-        timerDisplay.style.display = 'block';
-        scoreDisplay.style.display = 'block';
-        updateScore();
-        updateTimerDisplay();
-        updateProgressBar();
-        setFishingRodPosition();
-        resetMessage();
     }
 
     function updateScore() {
