@@ -6,6 +6,8 @@ document.addEventListener('DOMContentLoaded', function () {
     const timerDisplay = document.getElementById('timer-display');
     const timerBar = document.querySelector('#timer-bar .progress');
     const highestScoreDisplay = document.getElementById('highest-score');
+    const fishCatchSound = document.getElementById('fishCatchSound');
+    const bobberCastSound = document.getElementById('bobberCastSound');
     const mainMenu = document.getElementById('main-menu');
     const gameScene = document.querySelector('.scene');
 
@@ -135,6 +137,9 @@ document.addEventListener('DOMContentLoaded', function () {
         rodString.style.height = '100px';
         resetMessage();
 
+        // Play the bobber cast sound
+        bobberCastSound.play();
+
         // Simulate a random fish catch after a delay
         timer = setTimeout(() => {
             isFishCaught = true;
@@ -142,6 +147,9 @@ document.addEventListener('DOMContentLoaded', function () {
             showMessage('Fish caught! Press space to retract the rod.');
             // Add the animation class to start continuous bouncing
             bobber.classList.add('bounce');
+
+            // Play the fish catch sound
+            fishCatchSound.play();
         }, Math.floor(Math.random() * 5000) + 2000); // Random delay between 2 and 7 seconds
     }
 
