@@ -39,7 +39,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Function to end the game
     function endGame() {
-        if(gameStarted) {
         retractBobber();
 
         // Add any game-ending logic here
@@ -49,8 +48,9 @@ document.addEventListener('DOMContentLoaded', function () {
         document.getElementById('main-menu').style.display = 'flex';
         document.getElementById('main-menu').classList.add('opening');
 
+        timerDisplay.style.display = 'none';
+        scoreDisplay.style.display = 'none';
         gameStarted = false;
-    }
     }
 
     function startGameTimer() {
@@ -72,6 +72,8 @@ document.addEventListener('DOMContentLoaded', function () {
         isFishCaught = false;
         score = 0;
         timeLeft = 30; // Set your initial game time here
+        timerDisplay.style.display = 'block';
+        scoreDisplay.style.display = 'block';
         updateScore();
         updateTimerDisplay();
         updateProgressBar();

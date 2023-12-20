@@ -127,6 +127,7 @@ body {
 
 #score-display {
     position: absolute;
+    display: none;
     top: 10px;
     right: 10px;
     font-size: 18px;
@@ -135,6 +136,7 @@ body {
 
 #timer-display {
     position: absolute;
+    display: none;
     top: 40px; /* Adjust the top position to create space between score and timer */
     right: 10px;
     font-size: 18px;
