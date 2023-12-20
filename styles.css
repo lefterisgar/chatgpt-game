@@ -42,7 +42,7 @@ body {
 
 #boat {
     position: absolute;
-    bottom: 250px;
+    bottom: 39%;
     left: 50%;
     transform: translateX(-50%);
     width: 120px;
@@ -51,11 +51,11 @@ body {
 }
 
 #fishing-rod {
-    background-color: #8B4513;
+    background-color: #7b7b7b;
     width: 6px;
-    height: 80px;
+    height: 50px;
     position: fixed;
-    top: 400px;
+    top: 52%;
     left: 50%;
     transform: translateX(-50%);
 }
