@@ -5,6 +5,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const messageDisplay = document.getElementById('message-display');
     const timerDisplay = document.getElementById('timer-display');
     const timerBar = document.querySelector('#timer-bar .progress');
+    const highestScoreDisplay = document.getElementById('highest-score');
     const mainMenu = document.getElementById('main-menu');
     const gameScene = document.querySelector('.scene');
 
@@ -17,6 +18,25 @@ document.addEventListener('DOMContentLoaded', function () {
     let timer;
     let awesomeCatchCount = 0;
     let gameStarted = false;
+
+    // Retrieve the highest score from localStorage
+    let highestScore = localStorage.getItem('highestScore');
+
+    if (!highestScore) {
+        highestScore = 0;
+    }
+    
+    // Display the highest score in the main menu
+    highestScoreDisplay.textContent = `Highest Score: ${highestScore}`;
+    
+    // Function to update the highest score
+    function updateHighestScore() {
+        if (score > highestScore) {
+                highestScore = score;
+                localStorage.setItem('highestScore', highestScore);
+                highestScoreDisplay.textContent = `Highest Score: ${highestScore}`;
+        }
+    }
 
     function updateTimerDisplay() {
         const minutes = Math.floor(timeLeft / 60);
@@ -43,6 +63,9 @@ document.addEventListener('DOMContentLoaded', function () {
 
         // Add any game-ending logic here
         showMessage(`Game over! Your final score: ${score}`);
+
+        // Update the highest score
+        updateHighestScore();
     
         // Show the main menu with an opening animation
         document.getElementById('main-menu').style.display = 'flex';
@@ -164,6 +187,9 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         }
     });
+
+    // Display the highest score in the main menu
+    highestScoreDisplay.textContent = `Highest Score: ${highestScore}`;
 
     // Call setFishingRodPosition to set the initial position when the page loads
     setFishingRodPosition();

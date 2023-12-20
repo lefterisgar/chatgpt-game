@@ -159,15 +159,22 @@ body {
     left: 50%;
     transform: translate(-50%, -50%);
     display: flex;
+    text-align: center;
     flex-direction: column; /* Change to column to place items vertically */
     align-items: center;
     justify-content: space-around; /* Horizontal alignment */
     border-radius: 15px; /* Add border-radius for rounded corners */
     width: 80%;
     max-width: 400px;
-    height: 200px;
+    height: 250px;
     background-color: rgba(135, 175, 235, 0.8);
     z-index: 10;
+}
+
+.menu-item {
+    font-size: 20px;
+    color: #fff;
+    margin-bottom: 10px;
 }
 
 #main-menu h1 {
